@@ -11,7 +11,7 @@
   }
 
   .content{
-    border: 1px solid #e0e0e0;
+    // border: 1px solid #e0e0e0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,17 +19,17 @@
   }
 
   .react-resizable{
-    border: 1px solid #e0e0e0;
+    // border: 1px solid #e0e0e0;
     display: flex;
     justify-content: center;
     align-items: center;
     .react-resizable-handle{
       position: absolute;
-      border: 1px solid #e0e0e0;
+      // border: 1px solid #e0e0e0;
       z-index: 1;
-      width: 10px;
-      height: 10px;
-      background: transparent;
+      // width: 10px;
+      // height: 10px;
+      // background: transparent;
 
       &-e{
         right: 0;

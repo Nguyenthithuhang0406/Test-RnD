@@ -30,9 +30,8 @@ const DraggableItem = ({ item, onUpdate }) => {
   };
 
   return (
-    <Draggable position={{ x: position.x, y: position.y }} onStop={handleStop} nodeRef={ref}>
-      <div className="draggable-item" >
-        <div className="header">Drag me!</div>
+    <Draggable position={{ x: position.x, y: position.y }} onStop={handleStop} nodeRef={ref} >
+      <div className="draggable-item" style={{ width: position.width + 'px', height: position.width + 'px' }}>
         <ResizableBox
           width={position.width}
           height={position.height}
@@ -41,9 +40,8 @@ const DraggableItem = ({ item, onUpdate }) => {
           maxConstraints={[500, 500]}
           handleSize={[10, 10]}
           resizeHandles={['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw']}
-
         >
-          <div className="content" ref={ref} style={{width: '100%', height:'100%'}}>{item.name}</div>
+          <div className="content" ref={ref} style={{ width: '100%', height: '100%' }}>{item.name}</div>
         </ResizableBox>
 
       </div>
