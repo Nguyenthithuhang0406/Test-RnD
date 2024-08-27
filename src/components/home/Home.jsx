@@ -11,7 +11,7 @@ const Home = () => {
   const [items, setItems] = useState([]);
 
   const handleSelectItem = (item) => {
-    setSelectedItem([...selectedItem, item]);
+    setSelectedItem((prevItems) => [...prevItems, { ...item, x:0, y:0, width:200, height:200 }]);
   };
 
   const handleUpdateItem = (item) => {
@@ -27,7 +27,7 @@ const Home = () => {
       <SideBar onSelectItem={handleSelectItem} />
       <div className='main-content'>
         {
-          items.map((item) => (
+          items?.map((item) => (
             <DraggableItem
               key={item.id}
               item={item}
