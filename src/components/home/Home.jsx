@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import SideBar from '../sideBar/SideBar';
 import DraggableItem from '../DraggableItem/DraggableItem';
 
@@ -15,18 +15,8 @@ const Home = () => {
   };
 
   const handleUpdateItem = (item) => {
-    // setItems((prevItems) => {
-    //   prevItems?.map((i) => 
-    //     i.id === item.id ? {...i, ...item} : i
-    //   )
-    // });
-
     setSelectedItem(selectedItem.map(i => i.id === item.id ? { ...i, ...item } : i));
   };
-
-  useEffect(() => {
-    console.log("selectedItem: ", selectedItem);
-  }, [selectedItem]);
 
   return (
     <div className='home-container'>
