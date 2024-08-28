@@ -10,7 +10,16 @@ const Home = () => {
   const [selectedItem, setSelectedItem] = useState([]);
 
   const handleSelectItem = (item) => {
-    setSelectedItem((prevItems) => [...prevItems, { ...item, x: 0, y: 0, width: 200, height: 200 }]);
+    setSelectedItem((prevItems) => {
+      let newY = 0;
+      if(prevItems.length > 0) {
+        const lastItem = prevItems[prevItems.length - 1];
+        const lastItemHeight = parseInt(lastItem.height.replace('px', ''));
+        //+50 de tao kc giua cac phan tu
+        newY = lastItem.y + lastItemHeight + 50;
+      }
+      return [...prevItems, { ...item, x: 0, y: newY , width: 200, height: 200 }];
+    });
   };
 
   const handleUpdateItem = (item) => {
@@ -21,9 +30,9 @@ const Home = () => {
     <div className='home-container'>
       <SideBar onSelectItem={handleSelectItem} />
       <div className='main-content'>
-        {selectedItem && selectedItem?.map((item) => (
+        {selectedItem && selectedItem?.map((item, index) => (
           <DraggableItem
-            key={item.id}
+            key={index}
             item={item}
             onUpdate={handleUpdateItem}
           />
