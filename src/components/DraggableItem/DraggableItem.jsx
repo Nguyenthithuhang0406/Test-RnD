@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Rnd } from 'react-rnd';
 import './DraggableItem.scss';
+import Form from '../sideBar/items/form';
+import Field from '../sideBar/items/field';
+import Button from '../sideBar/items/button';
 
 const DraggableItem = ({ item, onUpdate }) => {
   const [position, setPosition] = useState({
@@ -44,15 +47,25 @@ const DraggableItem = ({ item, onUpdate }) => {
       onDragStop={handleDragStop}
       onResizeStop={handleResizeStop}
       bounds="parent"
-      minWidth={100}
-      minHeight={100}
+      minWidth={10}
+      minHeight={10}
       maxWidth={500}
       maxHeight={500}
     >
-      <div className='header'> Drag me!!</div>
+      {/* <div className='header'> Drag me!!</div> */}
       <div className="draggable-item" style={{ width: '100%', height: '100%' }}>
         <div className="content" style={{ width: '100%', height: '100%' }}>
-          {item.name}
+          {
+            item.name === 'Form' ? (
+              <Form />
+            ) : item.name === 'Field' ? (
+              <Field />
+            ) : item.name === 'Button' ? (
+              <Button />
+            ) : (
+              item.name
+            )
+          }
         </div>
       </div>
     </Rnd>

@@ -5,9 +5,12 @@ import './SideBar.scss';
 
 const SideBar = ({ onSelectItem }) => {
   const items = [
-    { id: 1, name: 'Card-Item' },
-    { id: 2, name: 'Button-Item' },
-    { id: 3, name: 'Image-Item' },
+    { id: '1', name: 'Card-Item'},
+    { id: '2', name: 'Button-Item'},
+    { id: '3', name: 'Image-Item'},
+    { id: '4', name: 'Form'},
+    { id: '5', name: 'Field'},
+    { id: '6', name: 'Button'},
   ];
 
   return (
@@ -25,9 +28,9 @@ const SideBar = ({ onSelectItem }) => {
             {item.name}
           </div>
         ))}
-    </div>
+      </div>
     </div>
   )
 }
 
-export default SideBar
+export default SideBar;
