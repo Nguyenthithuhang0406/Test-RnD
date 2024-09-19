@@ -1,10 +1,33 @@
 /* eslint-disable */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const RightSideBar = ({ selectedItem, onUpdateStyle }) => {
+const RightSideBar = ({ selectedItemEditStyle, onUpdateStyle }) => {
+  // console.log('selectedItemEditStyle', selectedItemEditStyle);
+  const [style, setStyle] = useState({
+    width: selectedItemEditStyle?.width || '0px',
+    height: selectedItemEditStyle?.height || '0px',
+    x: selectedItemEditStyle?.x || 0,
+    y: selectedItemEditStyle?.y || 0
+  });
+
+  useEffect(() => {
+    if (selectedItemEditStyle) {
+      setStyle({
+        width: selectedItemEditStyle?.width || '0px',
+        height: selectedItemEditStyle?.height || '0px',
+        x: selectedItemEditStyle?.x || 0,
+        y: selectedItemEditStyle?.y || 0
+      });
+    }
+  }, [selectedItemEditStyle]);
+
   const handleChange = (e) => {
-    const { name, value } = e.target
-    onUpdateStyle(name, value)
+    const { name, value } = e.target;
+    setStyle(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    onUpdateStyle(name, value);
   };
 
   return (
@@ -12,18 +35,18 @@ const RightSideBar = ({ selectedItem, onUpdateStyle }) => {
       <h3>Edit style</h3>
       <label>
         width:
-        <input type='number'
+        <input type='text'
           name='width'
-          value={selectedItem.width}
+          value={style.width}
           onChange={handleChange}
         />
       </label>
       
       <label>
         height:
-        <input type='number'
+        <input type='text'
           name='height'
-          value={selectedItem.height}
+          value={style.height}
           onChange={handleChange}
         />
       </label>
@@ -33,7 +56,7 @@ const RightSideBar = ({ selectedItem, onUpdateStyle }) => {
         x:
         <input type='number'
           name='x'
-          value={selectedItem.x}
+          value={style.x}
           onChange={handleChange}
         />
       </label>
@@ -42,7 +65,7 @@ const RightSideBar = ({ selectedItem, onUpdateStyle }) => {
         y:
         <input type='number'
           name='y'
-          value={selectedItem.y}
+          value={style.y}
           onChange={handleChange}
         />
       </label>

@@ -3,9 +3,10 @@ import React from 'react'
 import Field from '../sideBar/items/field';
 import Button from '../sideBar/items/button';
 import Form from '../sideBar/items/form';
+import { useSelector } from 'react-redux';
 
 const Preview = () => {
-  const components = JSON.parse(localStorage.getItem('selectedItem')) || [];
+  const components = useSelector((state) => state.selectedItem.selectedItems);
   return (
     <div className='preview-container'>
       {components.map((item, index) => (
