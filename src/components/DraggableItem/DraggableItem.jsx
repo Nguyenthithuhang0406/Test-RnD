@@ -15,16 +15,16 @@ const DraggableItem = ({ item, onUpdate}) => {
   const [position, setPosition] = useState({
     x: item.x || 300,
     y: item.y || 300,
-    width: item.width || 200,
-    height: item.height || 200,
+    width: item.width || "200px",
+    height: item.height || "200px",
   });
 
   useEffect(() => {
     setPosition({
       x: item.x || 300,
       y: item.y || 300,
-      width: item.width || 200,
-      height: item.height || 200,
+      width: item.width || "200px",
+      height: item.height || "200px",
     });
   }, [item]);
 
@@ -33,8 +33,8 @@ const DraggableItem = ({ item, onUpdate}) => {
       setPosition({
         x: selectedItemEdit?.x || 300,
         y: selectedItemEdit?.y || 300,
-        width: selectedItemEdit?.width || 200,
-        height: selectedItemEdit?.height || 200,
+        width: selectedItemEdit?.width || "200px",
+        height: selectedItemEdit?.height || "200px",
       });
     }
   }, [selectedItemEdit]);

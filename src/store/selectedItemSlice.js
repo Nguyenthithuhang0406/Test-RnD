@@ -26,8 +26,8 @@ const selectedItemSlice = createSlice({
         ...item,
         x: 0,
         y: newY,
-        width: 200,
-        height: 200,
+        width: "200px",
+        height: "200px",
         id: `${item.id} - ${count + 1}`,
       });
     },
