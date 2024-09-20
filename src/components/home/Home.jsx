@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBar from '../sideBar/SideBar';
 import DraggableItem from '../DraggableItem/DraggableItem';
 
@@ -16,23 +16,25 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const handleSelectItem = (item) => {
-    dispatch(addItem( item ));
+    dispatch(addItem(item));
   };
 
   const handleUpdateItem = (item) => {
-    dispatch(updateItem(item ));
+    dispatch(updateItem(item));
   };
 
   const handleUpdateStyle = (name, value) => {
     if (selectedItemEditStyle) {
       const updateItem = { ...selectedItemEditStyle, [name]: value };
-      // console.log("updateItem:", updateItem);
       handleUpdateItem(updateItem);
     }
-    // console.log("selectedItemEditStyle", selectedItemEditStyle);
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("selectedItems", selectedItems);
+  }, [selectedItems]);
 
   const handlePreview = () => {
     navigate('/preview');
@@ -45,15 +47,16 @@ const Home = () => {
           onClick={handlePreview}
         >preview</button>
       </div>
-      <div className='home-container'>
+      <div className='home-container' style={{position: "relative"}}>
         <SideBar onSelectItem={handleSelectItem} />
-        <div className='main-content'>
+        <div className='main-content' style={{ width: "100%" }}>
           {selectedItems && selectedItems?.map((item, index) => (
             <DraggableItem
               key={index}
               item={item}
               onUpdate={handleUpdateItem}
             />
+
           ))}
         </div>
         <RightSideBar selectedItemEditStyle={selectedItemEditStyle} onUpdateStyle={handleUpdateStyle} />

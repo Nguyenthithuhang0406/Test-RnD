@@ -14,7 +14,7 @@ const SideBar = ({ onSelectItem }) => {
   ];
 
   return (
-    <div className='sideBar-container'>
+    <div className='sideBar-container' style={{ width: "200px", position: "absolute", zIndex: "10", top: "0", left: "0", backgroundColor: "darkgray" }}>
       <div className='sideBar-top'>
         <p><b>Item list</b></p>
       </div>

@@ -2,21 +2,21 @@
 import React, { useEffect, useState } from 'react'
 
 const RightSideBar = ({ selectedItemEditStyle, onUpdateStyle }) => {
-  // console.log('selectedItemEditStyle', selectedItemEditStyle);
+  console.log('selectedItemEditStyle', selectedItemEditStyle);
   const [style, setStyle] = useState({
-    width: selectedItemEditStyle?.width || '0px',
-    height: selectedItemEditStyle?.height || '0px',
-    x: selectedItemEditStyle?.x || 0,
-    y: selectedItemEditStyle?.y || 0
+    width: selectedItemEditStyle?.width || '200px',
+    height: selectedItemEditStyle?.height || '200px',
+    x: selectedItemEditStyle?.x || 300,
+    y: selectedItemEditStyle?.y || 300
   });
 
   useEffect(() => {
     if (selectedItemEditStyle) {
       setStyle({
-        width: selectedItemEditStyle?.width || '0px',
-        height: selectedItemEditStyle?.height || '0px',
-        x: selectedItemEditStyle?.x || 0,
-        y: selectedItemEditStyle?.y || 0
+        width: selectedItemEditStyle?.width || '200px',
+        height: selectedItemEditStyle?.height || '200px',
+        x: selectedItemEditStyle?.x || 300,
+        y: selectedItemEditStyle?.y || 300
       });
     }
   }, [selectedItemEditStyle]);
@@ -31,7 +31,7 @@ const RightSideBar = ({ selectedItemEditStyle, onUpdateStyle }) => {
   };
 
   return (
-    <div className='style-editor' style={{width: "200px", height: "100vh", borderLeft: "solid 1px black"}}>
+    <div className='style-editor' style={{width: "200px", height: "100vh", borderLeft: "solid 1px black", position: "absolute", zIndex: "10", top: "0", right: "0", backgroundColor: "darkgray"}}>
       <h3>Edit style</h3>
       <label>
         width:
